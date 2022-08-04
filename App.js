@@ -125,19 +125,6 @@ const styles = StyleSheet.create({
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import { StatusBar } from "expo-status-bar";
 // import {
 //   StyleSheet,
