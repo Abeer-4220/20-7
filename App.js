@@ -8,7 +8,9 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  TouchableNativeFeedback,
 } from "react-native";
+import { KeyboardAvoidingView } from "react-native-web";
  
 export default function App() {
   const [email, setEmail] = useState("");
@@ -16,8 +18,10 @@ export default function App() {
  
   return (
     <View style={styles.container}>
-      <View style={styles.image}>
-      <Image width='8px' height='8px' style={styles.image} source={require("./assets/fb.png")} />
+      <View style={styles.image_position}>
+        
+      <Image style={styles.image} source={require("./assets/fb.png")} />
+      
       </View>
       <StatusBar style="auto" />
       <View style={styles.loginInput}>
@@ -39,13 +43,17 @@ export default function App() {
           onChangeText={(password) => setPassword(password)}
         />
       </View>
-      <TouchableOpacity style={styles.loginButton}>
+      <View style={styles.loginButton}>
+      <TouchableOpacity>
         <Text style={styles.loginButtonText}>LOG IN</Text>
       </TouchableOpacity>
-      <View style={styles.forgot_button}>
+      </View>
+      <View style={styles.loginButton}>
         <TouchableOpacity>
-        <Text style={styles.forgot_text}>Sign Up for Facebook</Text>
+        <Text style={styles.loginButtonText}>SIGN UP</Text>
       </TouchableOpacity>
+      </View>
+      <View style={styles.forgot_button}>
         <TouchableOpacity>
         <Text style={styles.forgot_text}>Forgot Password?</Text>
       </TouchableOpacity>
@@ -61,10 +69,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
- 
   image: {
+    width:50,
+    height:50,
+    resizeMode: 'contain'
+  },
+  image_position: {
     marginTop: -50,
-    marginBottom: 30
+    marginBottom: 30,
+    resizeMode:'contain'
   },
  
   loginInput: {
@@ -81,22 +94,25 @@ const styles = StyleSheet.create({
     fontWeight: '650',
     textAlign:'left',
     padding: 10,
+    color:'white'
   },
   forgot_button: {
-    marginVertical: 50
+    position: 'absolute',
+    alignContent:'flex-end',
+    justifyContent:'flex-end',
+    bottom: 70
   },
   forgot_text: {
     height: 30,
-    margin: 10,
     color: 'white',
-    fontSize: 18,
+    fontSize: 17,
     alignItems: 'center',
     alignSelf:'center'
   },
  
   loginButton: {
     width: "80%",
-    height: 50,
+    height: 40,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
@@ -104,7 +120,7 @@ const styles = StyleSheet.create({
   },
   loginButtonText: {
     color: '#9eabc6',
-    fontWeight: '900',
+    fontWeight: '700',
     fontSize: 17
   }
 });
